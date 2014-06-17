@@ -5,9 +5,6 @@ describe Track do
   let(:its_so_hard)  { Track.new(title: 'Its so hard', artists: ['Big Pun','Donell Jones'], duration: 172, price: 4.00) }
   describe 'attributes' do
     it 'has a title, list of artists, duration, price' do
-
-
-
       expect(stairway_to_heaven.title).to eq 'Stairway to Heaven'
       expect(stairway_to_heaven.artists).to eq ['Led Zeppelin']
       expect(stairway_to_heaven.duration).to eq 360
@@ -28,6 +25,10 @@ describe Track do
       expect(stairway_to_heaven.price).to eq 4.75
       expect(its_so_hard.price).to eq 3.60
     end
+    it 'raises an error if the discount percentage is greater thab 100' do
+      expect{ stairway_to_heaven.set_discount(101)}.to raise_error ArgumentError
+    end
+
   end
 
   describe '#reset_discount' do

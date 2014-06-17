@@ -7,6 +7,8 @@ class Album
     @tracks = tracks
     @price = tracks.map(&:price).reduce(&:+)
     @artists = tracks.map(&:artists).flatten.uniq
+
+    raise ArgumentError if tracks.count <1
   end
 
   def duration

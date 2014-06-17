@@ -11,6 +11,7 @@ class Track
   end
 
   def set_discount(percentage)
+    raise ArgumentError if percentage > 100
     @price = price * (1 - percentage * 0.01)
   end
 

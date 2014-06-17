@@ -7,7 +7,6 @@ describe Album do
   let(:led_zeppelin_iv) { Album.new(title: 'Led Zeppelin IV', tracks: [stairway_to_heaven, black_dog, its_so_hard]) }
   let(:bad_single) { Album.new(title: 'Bad Album', tracks: [its_so_hard])}
 
-
   describe 'attributes' do
     it 'has a title and a list of Track objects' do
 
@@ -16,7 +15,12 @@ describe Album do
       expect(led_zeppelin_iv.duration).to eq 892
       expect(led_zeppelin_iv.price).to eq 14.0
       expect(led_zeppelin_iv.artists).to match_array ['Led Zeppelin', 'Big Pun', 'Donell Jones']
+    end
+  end
 
+  describe '#initialize' do
+    it 'should raise error if there are no tracks' do
+      expect{ Album.new(title: 'Empty Album', tracks: []) }.to raise_error ArgumentError
     end
   end
 
