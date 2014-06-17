@@ -17,6 +17,12 @@ describe Track do
     end
   end
 
+  describe '#initialize' do
+    it 'raises error if list of artists not provided' do
+      expect{ Track.new(title: 'test', artists: 33, duration: 22, price: 100.00) }.to raise_error ArgumentError
+    end
+  end
+
   describe '#set_discount' do
     it 'reduces the price by a given percentage' do
       stairway_to_heaven.set_discount(5)

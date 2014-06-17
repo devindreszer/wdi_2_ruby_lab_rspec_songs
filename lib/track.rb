@@ -8,6 +8,8 @@ class Track
     @price = price
     @original_price = price
 
+    raise ArgumentError if artists.class != Array
+
   end
 
   def set_discount(percentage)
