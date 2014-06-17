@@ -23,10 +23,23 @@ describe Track do
   describe '#set_discount' do
     it 'reduces the price by a given percentage' do
       stairway_to_heaven.set_discount(5)
-      expect(stairway_to_heaven.price).to eq 4.75
-
       its_so_hard.set_discount(10)
+
+      expect(stairway_to_heaven.price).to eq 4.75
       expect(its_so_hard.price).to eq 3.60
+    end
+  end
+
+  describe '#reset_discount' do
+    it 'restores the price to its original price' do
+      stairway_to_heaven.set_discount(5)
+      its_so_hard.set_discount(10)
+
+      stairway_to_heaven.reset_discount
+      its_so_hard.reset_discount
+
+      expect(stairway_to_heaven.price).to eq 5
+      expect(its_so_hard.price).to eq 4
     end
   end
 
